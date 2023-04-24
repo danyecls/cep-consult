@@ -3,6 +3,7 @@ package main
 import (
 	"cep-consult/api/handle"
 	_ "cep-consult/docs"
+	"fmt"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -22,5 +23,6 @@ func main() {
 	r.PathPrefix("/swagger").Handler(httpSwagger.WrapHandler)
 	r.HandleFunc("/v1/consult-address", handle.ConsultAdress).Methods("POST")
 
+	fmt.Println("Running Port:8080")
 	http.ListenAndServe(":8080", r)
 }
