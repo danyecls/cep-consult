@@ -1,0 +1,28 @@
+API de Consulta de Endereço
+
+Esse é um programa em Go que cria uma API para consultar informações de endereço a partir de um CEP. O programa usa o pacote "mux" do Gorilla para lidar com as rotas da API e o pacote "http-swagger" para gerar documentação Swagger.
+
+Rotas
+
+A API possui apenas uma rota:
+POST /v1/consulta-endereco
+
+Esta rota recebe um JSON contendo o CEP a ser consultado e retorna um JSON contendo as informações do endereço, incluindo o valor do frete.
+
+json-example:
+
+{
+  "cep": "00000-000"
+}
+
+Execução
+Execute o comando abaixo para baixar as dependencias do projeto:
+go get ./... 
+Execute o comando abaixo para roda o projeto:
+go run main.go
+Execute o comando abaixo para roda os testes do projeto:
+go test ./... 
+Acesse a API e consulte a documentação localmente:
+
+http://localhost:8080/swagger/index.html#/
+
