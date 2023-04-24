@@ -1,18 +1,24 @@
 API de Consulta de Endereço
 
-Esse é um programa em Go que cria uma API para consultar informações de endereço a partir de um CEP. O programa usa o pacote "mux" do Gorilla para lidar com as rotas da API e o pacote "http-swagger" para gerar documentação Swagger.
+Esse é um serviço API REST de consulta de endereço e cálculo de frete para um determinado CEP.
+A consulta é feita pela API VIA CEP, conforme a documentação https://viacep.com.br/. 
+O valor do frete é fixo de acordo com as regiões do Brasil: Sudeste (R$ 7,85), Centro-Oeste (R$ 12,50), Nordeste (R$ 15,98), Sul (R$
+17,30) e Norte (R$ 20,83). 
+O programa usa o pacote "mux" do Gorilla para lidar com as rotas da API 
+e o pacote "http-swagger" para gerar documentação Swagger.
 
 Rotas
 
 A API possui apenas uma rota:
 POST /v1/consult-address
 
-Esta rota recebe um JSON contendo o CEP a ser consultado e retorna um JSON contendo as informações do endereço, incluindo o valor do frete.
+Esta rota recebe um JSON contendo o CEP a ser consultado e 
+retorna um JSON contendo as informações do endereço, incluindo o valor do frete.
 
 json-example:
 
 {
-  "cep": "00000-000"
+  "cep": "00000000"
 }
 
 Execução

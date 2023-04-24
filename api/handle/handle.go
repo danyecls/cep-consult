@@ -14,7 +14,7 @@ import (
 // @Accept json
 // @Produce json
 // @Param cep body string true "CEP a ser consultado"
-// @Success 200 {object} utils.Address
+// @Success 200 {object} Address
 // @Failure 400 "Requisição inválida"
 // @Failure 404 "CEP não encontrado"
 // @Failure 500 "Erro ao consultar o ViaCEP ou decodificar a resposta"
