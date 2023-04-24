@@ -1,0 +1,50 @@
+definitions:
+  main.Address:
+    properties:
+      bairro:
+        type: string
+      cep:
+        type: string
+      cidade:
+        type: string
+      complemento:
+        type: string
+      estado:
+        type: string
+      frete:
+        type: number
+      rua:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /v1/consulta-endereco:
+    post:
+      consumes:
+      - application/json
+      description: Consulta o endereço a partir do CEP informado
+      parameters:
+      - description: CEP a ser consultado
+        in: body
+        name: cep
+        required: true
+        schema:
+          type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Address'
+        "400":
+          description: Requisição inválida
+        "404":
+          description: CEP não encontrado
+        "500":
+          description: Erro ao consultar o ViaCEP ou decodificar a resposta
+      summary: Consulta endereço
+      tags:
+      - Endereço
+swagger: "2.0"
