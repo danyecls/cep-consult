@@ -1,7 +1,7 @@
 package service
 
 import (
-	"app/app/api/utils"
+	"cep-consult/api/utils"
 	"encoding/json"
 	"fmt"
 	"net/http"

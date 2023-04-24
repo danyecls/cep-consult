@@ -1,8 +1,8 @@
 package main
 
 import (
-	"app/app/api/handle"
-	_ "app/app/docs"
+	"cep-consult/api/handle"
+	_ "cep-consult/docs"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -13,7 +13,7 @@ import (
 // @description Esta é uma API que consulta informações de endereço a partir de um CEP.
 // @version 1
 // @host localhost:8080
-// @BasePath /v1
+// @BasePath /
 
 func main() {
 	r := mux.NewRouter()

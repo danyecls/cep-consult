@@ -1,8 +1,8 @@
 package handle
 
 import (
-	"app/app/api/service"
-	"app/app/api/utils"
+	"cep-consult/api/service"
+	"cep-consult/api/utils"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
@@ -14,11 +14,11 @@ import (
 // @Accept json
 // @Produce json
 // @Param cep body string true "CEP a ser consultado"
-// @Success 200 {object} Address
+// @Success 200 {object} utils.Address
 // @Failure 400 "Requisição inválida"
 // @Failure 404 "CEP não encontrado"
 // @Failure 500 "Erro ao consultar o ViaCEP ou decodificar a resposta"
-// @Router /v1/consulta-endereco [post]
+// @Router /v1/consult-address [post]
 func ConsultAdress(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {

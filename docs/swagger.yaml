@@ -1,5 +1,6 @@
+basePath: /
 definitions:
-  main.Address:
+  utils.Address:
     properties:
       bairro:
         type: string
@@ -16,10 +17,15 @@ definitions:
       rua:
         type: string
     type: object
+host: localhost:8080
 info:
   contact: {}
+  description: Esta é uma API que consulta informações de endereço a partir de um
+    CEP.
+  title: API de consulta de endereço
+  version: "1"
 paths:
-  /v1/consulta-endereco:
+  /v1/consult-address:
     post:
       consumes:
       - application/json
@@ -37,7 +43,7 @@ paths:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/main.Address'
+            $ref: '#/definitions/utils.Address'
         "400":
           description: Requisição inválida
         "404":

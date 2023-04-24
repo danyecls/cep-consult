@@ -5,7 +5,7 @@ Esse é um programa em Go que cria uma API para consultar informações de ender
 Rotas
 
 A API possui apenas uma rota:
-POST /v1/consulta-endereco
+POST /v1/consult-address
 
 Esta rota recebe um JSON contendo o CEP a ser consultado e retorna um JSON contendo as informações do endereço, incluindo o valor do frete.
 
@@ -20,7 +20,8 @@ Execute o comando abaixo para baixar as dependencias do projeto:
 go get ./... 
 Execute o comando abaixo para roda o projeto:
 go run main.go
-
+Execute o comando abaixo para roda os testes do projeto:
+go test ./... 
 Acesse a API e consulte a documentação localmente:
 
 http://localhost:8080/swagger/index.html#/
