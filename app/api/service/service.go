@@ -1,27 +1,13 @@
 package service
 
 import (
-	"app/api/utils"
+	"app/app/api/utils"
 	"encoding/json"
 	"fmt"
 	"net/http"
 )
 
 func CheckCep(cep string, w http.ResponseWriter) utils.ViaCepResponse {
-	responseCep := utils.ViaCepResponse{}
-
-	//responseCache, ok := repository.CacheCep(cep)
-
-	// if ok == true {
-	// 	responseCep = responseCache
-	// } else {
-	responseCep = getViaCep(cep, w)
-	//}
-
-	return responseCep
-}
-
-func getViaCep(cep string, w http.ResponseWriter) utils.ViaCepResponse {
 	cepResponse := utils.ViaCepResponse{}
 
 	viaCepURL := fmt.Sprintf("https://viacep.com.br/ws/%s/json/", cep)

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"app/api/handle"
-	_ "app/docs"
+	"app/app/api/handle"
+	_ "app/app/docs"
 	"net/http"
 
 	"github.com/gorilla/mux"
