@@ -2,8 +2,8 @@ package utils
 
 import "fmt"
 
-var RequestData struct {
-	Cep string `json:"cep"`
+type RequestData struct {
+	Cep string `json:"cep" validate:"required,cep"`
 }
 
 func FormatCEP(cep string) string {

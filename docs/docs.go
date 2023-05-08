@@ -94,10 +94,10 @@ const docTemplate = `{
 var SwaggerInfo = &swag.Spec{
 	Version:          "1",
 	Host:             "localhost:8080",
-	BasePath:         "/",
+	BasePath:         "/v1",
 	Schemes:          []string{},
-	Title:            "API de consulta de endereço",
-	Description:      "Esta é uma API que consulta informações de endereço a partir de um CEP.",
+	Title:            "CEP Consult API",
+	Description:      "This is a simple API for address lookup based on CEP",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",

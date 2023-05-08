@@ -3,9 +3,9 @@ package handle
 import (
 	"cep-consult/api/service"
 	"cep-consult/api/utils"
-	"encoding/json"
-	"io/ioutil"
 	"net/http"
+
+	"github.com/labstack/echo/v4"
 )
 
 // @Summary Consulta endereço
@@ -14,26 +14,25 @@ import (
 // @Accept json
 // @Produce json
 // @Param cep body string true "CEP a ser consultado"
-// @Success 200 {object} Address
+// @Success 200 {object} utils.Address
 // @Failure 400 "Requisição inválida"
 // @Failure 404 "CEP não encontrado"
 // @Failure 500 "Erro ao consultar o ViaCEP ou decodificar a resposta"
 // @Router /v1/consult-address [post]
-func ConsultAdress(w http.ResponseWriter, r *http.Request) {
-	body, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		return
+func ConsultAddress(c echo.Context) error {
+	requestData := new(utils.RequestData)
+
+	if err := c.Bind(requestData); err != nil {
+		return c.String(http.StatusBadRequest, "Invalid request")
 	}
 
-	if err := json.Unmarshal(body, &utils.RequestData); err != nil {
-		w.WriteHeader(http.StatusBadRequest)
-		return
+	viaCepData := service.CheckCep(requestData.Cep, c.Response())
+
+	if viaCepData.Cep == "" {
+		return c.String(http.StatusNotFound, "CEP not found")
 	}
 
-	viaCepData := service.CheckCep(utils.RequestData.Cep, w)
-
-	address := utils.Address{
+	address := &utils.Address{
 		Cep:         utils.FormatCEP(viaCepData.Cep),
 		Rua:         viaCepData.Logradouro,
 		Complemento: viaCepData.Complemento,
@@ -43,6 +42,5 @@ func ConsultAdress(w http.ResponseWriter, r *http.Request) {
 		Frete:       utils.CalculateFreight(viaCepData.Uf),
 	}
 
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(address)
+	return c.JSON(http.StatusOK, address)
 }
